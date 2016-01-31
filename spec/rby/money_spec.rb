@@ -13,10 +13,6 @@ describe Rby::Money do
     expect(euro_money.inspect).to be_kind_of String
   end
 
-  it 'responds to #inspect with a String' do
-    expect(euro_money.inspect).to be_kind_of String
-  end
-
   it 'responds to #inspect with the expected content' do
     expect(euro_money.inspect).to eq('10.00 EUR')
   end

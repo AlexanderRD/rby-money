@@ -8,12 +8,16 @@ describe Rby::Account do
   let(:fifty_one_euro) { Rby::Money.new(51,'EUR') }
   let(:twenty_dollars) { Rby::Money.new(20,'USD')}
 
+  it 'responds to #amount with Numeric' do
+    expect(account.amount).to be_kind_of Numeric
+  end
+
   it 'responds to #amount with expected amount' do
     expect(account.amount).to eq 100
   end
 
   it 'responds to #currency with a String' do
-    expect(account.currency).to be_kind_of(String)
+    expect(account.currency).to be_kind_of String
   end
 
   it 'responds to #currency with expected currency' do
@@ -21,7 +25,7 @@ describe Rby::Account do
   end
 
   it 'responds to #inspect with a String' do
-    expect(account.inspect).to be_kind_of(String)
+    expect(account.inspect).to be_kind_of String
   end
 
   it 'responds to #inspect with the expected content' do
@@ -94,7 +98,7 @@ describe Rby::Account do
         expect(fifty_euro.convert_to('USD') == fifty_euro).to be true
       end
 
-      it 'responds with false result when inequal' do
+      it 'responds with false when inequal' do
         expect(fifty_one_euro.convert_to('USD') == fifty_euro).to be false
       end
     end
