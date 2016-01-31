@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Alexander Donkin"]
   spec.email         = ["alexander_donkin@yahoo.co.uk"]
 
-  spec.summary       = "Money making machine"
+  spec.summary       = "Money converting machine"
   spec.description   = "Converting impossible sums since 2016"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
