@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in ruby_money.gemspec
+# Specify your gem's dependencies in rby-money.gemspec
 gemspec

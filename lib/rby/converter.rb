@@ -1,15 +1,13 @@
-module RubyMoney
+module Rby
   class Converter
-    attr_accessor :base_currency,
-                  :currency_hash
+    attr_accessor :currency_hash
 
     def initialize(base_currency=nil, currency_hash={})
       configure_rates(base_currency, currency_hash)
     end
 
     def configure_rates(base_currency, currency_hash={})
-      @base_currency = base_currency
-      @currency_hash = currency_hash
+      @currency_hash = currency_hash.merge({ base_currency => 1 })
     end
 
     def determine_amount(account, target_currency)
@@ -20,7 +18,7 @@ module RubyMoney
       current_rate = rate_for_currency(account.currency)
       target_rate = rate_for_currency(target_currency)
 
-      (account.amount * target_rate).fdiv(current_rate)
+      (account.amount * target_rate).fdiv(current_rate).round(2)
     end
 
     private
@@ -30,7 +28,6 @@ module RubyMoney
     end
 
     def rate_for_currency currency_name
-      return 1 if currency_name == base_currency
       currency_hash.fetch(currency_name, nil)
     end
   end

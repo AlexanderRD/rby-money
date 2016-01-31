@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby_money/version'
+require 'rby/money'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby_money"
-  spec.version       = RubyMoney::VERSION
+  spec.name          = "rby-money"
+  spec.version       = Rby::Money::VERSION
   spec.authors       = ["Alexander Donkin"]
   spec.email         = ["alexander_donkin@yahoo.co.uk"]
 
