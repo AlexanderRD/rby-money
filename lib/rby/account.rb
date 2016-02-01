@@ -13,60 +13,39 @@ module Rby
     end
 
     def +(other)
-      if other.is_a? Rby::Money
-        Rby::Money.new(amount + other.convert_to(currency).amount, currency)
-      else
-        raise_coercion_error(other, 'Rby::Money')
-      end
+      raise_coercion_error(other, 'Rby::Money') unless other.is_a? Rby::Money
+      Rby::Money.new(amount + other.convert_to(currency).amount, currency)
     end
 
     def -(other)
-      if other.is_a? Rby::Money
-        Rby::Money.new(amount - other.convert_to(currency).amount, currency)
-      else
-        raise_coercion_error(other, 'Rby::Money')
-      end
+      raise_coercion_error(other, 'Rby::Money') unless other.is_a? Rby::Money
+      Rby::Money.new(amount - other.convert_to(currency).amount, currency)
     end
 
     def /(other)
-      if other.is_a? Numeric
-        Rby::Money.new(amount / other, currency)
-      else
-        raise_coercion_error(other, 'Numeric')
-      end
+      raise_coercion_error(other, 'Numeric') unless other.is_a? Numeric
+      Rby::Money.new(amount.fdiv(other), currency)
     end
 
     def *(other)
-      if other.is_a? Numeric
-        Rby::Money.new(amount * other, currency)
-      else
-        raise_coercion_error(other, 'Numeric')
-      end
+      raise_coercion_error(other, 'Numeric') unless other.is_a? Numeric
+      Rby::Money.new(amount * other, currency)
     end
 
     def ==(other)
-      if other.is_a? Rby::Money
-        converted_other = other.convert_to(currency)
-        (amount == converted_other.amount) && (currency == converted_other.currency)
-      else
-        raise_coercion_error(other, 'Rby::Money')
-      end
+      raise_coercion_error(other, 'Rby::Money') unless other.is_a? Rby::Money
+
+      amount == other.convert_to(currency).amount
     end
 
     def >(other)
-      if other.is_a? Rby::Money
-        amount > other.convert_to(currency).amount
-      else
-        raise_coercion_error(other, 'Rby::Money')
-      end
+      raise_coercion_error(other, 'Rby::Money') unless other.is_a? Rby::Money
+      amount > other.convert_to(currency).amount
     end
 
     def <(other)
-      if other.is_a? Rby::Money
-        amount < other.convert_to(currency).amount
-      else
-        raise_coercion_error(other, 'Rby::Money')
-      end
+      raise_coercion_error(other, 'Rby::Money') unless other.is_a? Rby::Money
+      amount < other.convert_to(currency).amount
     end
 
     private
